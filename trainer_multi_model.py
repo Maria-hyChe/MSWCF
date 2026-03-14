@@ -57,7 +57,7 @@ class StreamingGeospatialDataset(IterableDataset):
         if self.verbose:
             print("Creating a filename stream for worker %d" % (worker_id))
 
-          N = len(self.fns)
+        N = len(self.fns)
         num_files_per_worker = int(np.ceil(N / num_workers))
         lower_idx = worker_id * num_files_per_worker
         upper_idx = min(N, (worker_id+1) * num_files_per_worker)
