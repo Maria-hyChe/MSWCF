@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from AttentionMechanism import AttentionMechanism
-from networks.modeling import VisionTransformer, Attention
+from networks.module import VisionTransformer, Attention
 
 class CrossAttention(nn.Module):
     def __init__(self, in_dim1, in_dim2, config):

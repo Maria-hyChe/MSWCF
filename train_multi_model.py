@@ -6,7 +6,7 @@ import torch
 import torch.backends.cudnn as cudnn
 
 from multi_Transformer import net_multi_Transformer
-from networks.modeling import CONFIGS as CONFIGS_ViT_seg
+from networks.module import CONFIGS as CONFIGS_ViT_seg
 from trainer_multi_model import trainer_dataset
 import os
 from networks.LHCNet import LHCNet

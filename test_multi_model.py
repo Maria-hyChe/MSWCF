@@ -9,7 +9,7 @@ import numpy as np
 import torch.backends.cudnn as cudnn
 
 from multi_Transformer import net_multi_Transformer
-from networks.modeling import CONFIGS as CONFIGS_ViT_seg
+from networks.module import CONFIGS as CONFIGS_ViT_seg
 import torch.nn.functional as F
 import utils
 import torch
