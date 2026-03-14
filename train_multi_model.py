@@ -6,10 +6,10 @@ import torch
 import torch.backends.cudnn as cudnn
 
 from multi_Transformer import net_multi_Transformer
-from networks.vit_seg_modeling import CONFIGS as CONFIGS_ViT_seg
+from networks.modeling import CONFIGS as CONFIGS_ViT_seg
 from trainer_multi_model import trainer_dataset
 import os
-from networks.vit_seg_modeling_L2HNet import L2HNet
+from networks.LHCNet import LHCNet
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str, default='Chesapeake', help='experiment_name')
@@ -51,8 +51,8 @@ if __name__ == "__main__":
     config_vit.n_classes = args.num_classes
     config_vit.patches.grid = (int(img_size / vit_patches_size), int(img_size / vit_patches_size))
 
-    backbone1 = L2HNet(width=args.CNN_width,image_band=4)
-    backbone2 = L2HNet(width=args.CNN_width,image_band=6)
+    backbone1 = LHCNet(width=args.CNN_width, image_band=4)
+    backbone2 = LHCNet(width=args.CNN_width, image_band=6)
     net = net_multi_Transformer(config_vit, backbone1=backbone1,backbone2=backbone2, img_size=img_size,
                   num_classes=config_vit.n_classes).cuda()
     net = torch.nn.DataParallel(net, device_ids=[0, 1])

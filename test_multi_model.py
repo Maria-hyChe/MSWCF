@@ -9,11 +9,11 @@ import numpy as np
 import torch.backends.cudnn as cudnn
 
 from multi_Transformer import net_multi_Transformer
-from networks.vit_seg_modeling import CONFIGS as CONFIGS_ViT_seg
+from networks.modeling import CONFIGS as CONFIGS_ViT_seg
 import torch.nn.functional as F
 import utils
 import torch
-from networks.vit_seg_modeling_L2HNet import L2HNet
+from networks.LHCNet import LHCNet
 
 class TileInferenceDataset(Dataset):
     
@@ -174,8 +174,8 @@ if __name__ == "__main__":
     config_vit.patches.size = (vit_patches_size, vit_patches_size)
     config_vit.patches.grid = (int(args.img_size/vit_patches_size), int(args.img_size/vit_patches_size))
 
-    backbone1 = L2HNet(width=args.CNN_width,image_band=4)
-    backbone2 = L2HNet(width=args.CNN_width,image_band=6)
+    backbone1 = LHCNet(width=args.CNN_width, image_band=4)
+    backbone2 = LHCNet(width=args.CNN_width, image_band=6)
     net = net_multi_Transformer(config_vit, backbone1=backbone1,backbone2=backbone2, img_size=args.img_size,
                   num_classes=config_vit.n_classes).cuda()
 

@@ -33,7 +33,7 @@ class RPBlock(nn.Module):
         output = self.fuse_conv(branches) + x
         return output
 
-class L2HNet(nn.Module):
+class LHCNet(nn.Module):
     def __init__(self, 
                  width,
                  image_band=10,
@@ -41,7 +41,7 @@ class L2HNet(nn.Module):
                  length=5, 
                  ratios=[1, 0.5, 0.25], 
                  bn_momentum=0.1):
-        super(L2HNet,self).__init__()
+        super(LHCNet, self).__init__()
         self.width = width
         self.startconv = nn.Conv2d(image_band, self.width, kernel_size=3, stride=1, padding=1)
         self.rpblocks = nn.ModuleList()
